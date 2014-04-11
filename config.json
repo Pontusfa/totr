@@ -1,0 +1,23 @@
+        {
+            "author": "Pontus Falk",
+            "appName": "Totr",
+            "setters": {
+                "port": 8081,
+                "https port": 8443,
+                "logFile": ".logs/app.log",
+                "logToConsole": true,
+                "env": "development"
+            },
+                "db": {
+                    "host": "localhost",
+                    "port": "27017",
+                    "pool": 50,
+                    "user": "pontus",
+                    "pass": "pontus",
+                    "database": "yatt"
+            }
+
+
+
+
+        }
