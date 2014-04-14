@@ -47,6 +47,13 @@ obj.peers = [
     valid: no
   },
   {
+    name: 'Bad IP #3'
+    peer:
+      peer_id: 'a', infoHash: 'true' , ip: '127.0.0.1', port: 3133, passkey: 'true'
+    error: errors.BADIP
+    valid: no
+  },
+  {
     name: 'Bad Port #1'
     peer:
       peer_id: 'a', infoHash: 'true' , ip: '173.194.40.232', port: 333, passkey: 'true'
@@ -80,6 +87,13 @@ obj.peers = [
       peer_id: 'a', infoHash: 'true' , ip: '173.194.40.232', port: 3133, passkey: 'inactive'
     error: errors.INACTIVEUSER
     valid: no
+  },
+  {
+    name: 'No passkey'
+    peer:
+      peer_id: 'a', infoHash: 'true' , ip: '173.194.40.232', port: 3133, passkey: ''
+    error: errors.NOERROR
+    valid: yes
   },
 ]
 

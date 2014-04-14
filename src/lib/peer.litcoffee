@@ -233,7 +233,6 @@ ___
             if @infoHash?
                 query = criteria: infoHash: @infoHash
                 {result} = queries.getDocuments query
-                console.log result
                 if result? and Object.getOwnPropertyNames(result).length > 0
                     yes
                 else
