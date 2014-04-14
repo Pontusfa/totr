@@ -1,3 +1,6 @@
+# Usage:
+# grunt [test | coverage | clean | build]
+
 module.exports = (grunt) ->
   'use strict'
 
