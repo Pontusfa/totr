@@ -1,1 +1,0 @@
-== Torrent tracker for the modern pirate ==

@@ -16,22 +16,25 @@ module.exports = (grunt) ->
         src: 'dist/js/*'
 
       test:
-        src: 'test/compiled'
+        src: ['test/compiledTests', 'test/compiledSrc']
 
       coverage:
         src: ['coverage/instrument', 'coverage/src/']
 
-    # use in a test to require either real or instrumented module.
-    # example: module = require process.env.srcPath + '/lib/logger'
+  # use in a test to require either real or instrumented module.
+  # example: module = require process.env.srcPath + '/lib/logger'
     env:
+      general:
+        configPath: path.join __dirname, 'config.json'
+        fixturesPath: path.join __dirname, 'test', 'fixtures'
       test: # used in normal testing
-        srcPath: path.join __dirname, 'src'
+        srcPath: path.join __dirname, 'test', 'compiledSrc'
 
-      coverage: #used for doing a coverage test run
+      coverage: # used for doing a coverage testing
         srcPath: path.join __dirname, 'coverage/instrument/coverage/src/'
 
     instrument: # istanbul-instrumenting for coverage
-      files: 'coverage/src/**/*.js' # asumes coffee coverage has run
+      files: 'coverage/src/**/*.js' # asumes coffee:coverage has run
       options:
         lazy: true
         basePath: 'coverage/instrument'
@@ -52,7 +55,7 @@ module.exports = (grunt) ->
         expand: true
         flatten: false
         cwd: 'src/'
-        src: '**/*.coffee'
+        src: '**/*.litcoffee'
         dest: 'dist/js/'
         ext: '.js'
 
@@ -60,26 +63,34 @@ module.exports = (grunt) ->
         expand: true
         flatten: false
         cwd: 'test/'
-        src: '**/*_test.coffee'
-        dest: 'test/compiled/'
+        src: '**/*Test.coffee'
+        dest: 'test/compiledTests/'
+        ext: '.js'
+
+      srcToTest:
+        expand: true
+        flatten: false
+        cwd: 'src/'
+        src: '**/*.litcoffee'
+        dest: 'test/compiledSrc/'
         ext: '.js'
 
       coverage:
         expand: true
         flatten: false
         cwd: 'src/'
-        src: '**/*.coffee'
+        src: '**/*.litcoffee'
         dest: 'coverage/src/'
         ext: '.js'
 
     coffeelint:
       src:
-        src: 'src/**/*.coffee'
+        src: 'src/**/*.litcoffee'
         options:
           configFile: 'coffeeLint.json'
 
       test:
-        src: 'test/**/*.coffee'
+        src: 'test/**/*.litcoffee'
         options:
           configFile: 'coffeeLint.json'
 
@@ -90,25 +101,28 @@ module.exports = (grunt) ->
           reporter: 'spec'
           require: [ 'should', 'nock']
         expand: true
-        src: 'test/compiled/**/*_test.js'
+        src: 'test/compiledTests/**/*Test.js'
 
   grunt.registerTask 'test', ['coffeelint',
                               'clean:test',
                               'coffee:test',
+                              'coffee:srcToTest',
                               'env:test',
+                              'env:general',
                               'mochaTest',
                               'clean:test']
 
   grunt.registerTask 'build', ['coffeelint:src',
-                                 'clean:dist',
-                                 'coffee:dist']
+                               'clean:dist',
+                               'coffee:dist']
 
   grunt.registerTask 'coverage', ['coffeelint',
                                   'clean:coverage',
-                                  'clean:test',
                                   'coffee:coverage',
                                   'instrument',
                                   'env:coverage',
+                                  'env:general',
+                                  'clean:test',
                                   'coffee:test',
                                   'mochaTest',
                                   'storeCoverage',

@@ -1,23 +1,27 @@
-        {
-            "author": "Pontus Falk",
-            "appName": "Totr",
-            "setters": {
-                "port": 8081,
-                "https port": 8443,
-                "logFile": ".logs/app.log",
-                "logToConsole": true,
-                "env": "development"
-            },
-                "db": {
-                    "host": "localhost",
-                    "port": "27017",
-                    "pool": 50,
-                    "user": "pontus",
-                    "pass": "pontus",
-                    "database": "yatt"
-            }
-
-
-
-
-        }
+{
+    "author": "Pontus Falk",
+    "appName": "Totr",
+    "setters": {
+        "port": 6456,
+        "logFile": ".logs/app.log",
+        "logToConsole": true,
+        "env": "development"
+    },
+    "db": {
+        "host": "localhost",
+        "port": "27017",
+        "pool": 50,
+        "user": "pontus",
+        "pass": "pontus",
+        "database": "yatt"
+    },
+    "errors": {
+        "NOERROR": -1,
+        "BADPORT": 1,
+        "BADIP": 2,
+        "BADINFOHASH": 3,
+        "BADPASSKEY": 4,
+        "INACTIVEUSER": 5,
+        "BANNEDUSER": 6
+    }
+}
