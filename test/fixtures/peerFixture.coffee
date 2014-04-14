@@ -33,6 +33,13 @@ obj.peers = [
     valid: no
   },
   {
+    name: 'Bad Info Query'
+    peer:
+      peer_id: 'a', infoHash: 'badQuery' , ip: '173.194.40.232', port: 3133, passkey: 'true'
+    error: errors.BADQUERY
+    valid: no
+  },
+  {
     name: 'Bad IP #1'
     peer:
       peer_id: 'a', infoHash: 'true' , ip: '2a13.4.214.12', port: 3133, passkey: 'true'
@@ -94,6 +101,13 @@ obj.peers = [
       peer_id: 'a', infoHash: 'true' , ip: '173.194.40.232', port: 3133, passkey: ''
     error: errors.NOERROR
     valid: yes
+  },
+  {
+    name: 'Bad Passkey Query'
+    peer:
+      peer_id: 'a', infoHash: 'true' , ip: '173.194.40.232', port: 3133, passkey: 'badQuery'
+    error: errors.BADQUERY
+    valid: no
   },
 ]
 

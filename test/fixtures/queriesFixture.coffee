@@ -5,27 +5,26 @@ obj.getDocuments = (options) ->
   if not criteria?
     result: null
   else if criteria.infoHash?
-    if criteria.infoHash is 'true'
-      result: a: 1
-    else if criteria.infoHash is 'false'
-      result: {}
-    else
-      {}
+    switch criteria.infoHash
+      
+      when 'true' then return result: a: 1
+      when 'false' then return result: {}
+      when 'badQuery' then return error: 'bad query'
+      else return {}
+    
   else if criteria.passkey?
-    if criteria.passkey is 'true'
-      result: active: yes, banned: no
-    else if criteria.passkey is 'inactive'
-      result: active: no, banned: no
-    else if criteria.passkey is 'banned'
-      result: active: yes, banned: yes
-    else if criteria.passkey is 'noPasskey'
-      result: null
-    else
-      {}
+    switch criteria.passkey
+
+      when 'true' then return result: active: yes, banned: no
+      when 'false' then return result: {}
+      when 'badQuery' then return error: 'bad query'
+      when 'inactive' then return result: active: no, banned: no
+      when 'banned' then return result: active: yes, banned: yes
+      when 'noPasskey' then return {}
+      else return {}
+
   else
     return result: null
-
-
 
 module.exports = obj
  

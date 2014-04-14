@@ -232,8 +232,13 @@ ___
         _validateInfoHash: ->
             if @infoHash?
                 query = criteria: infoHash: @infoHash
-                {result} = queries.getDocuments query
-                if result? and Object.getOwnPropertyNames(result).length > 0
+                {error, result} = queries.getDocuments query
+                
+                if error?
+                    @error = errors.BADQUERY
+                    no
+                else if result? and
+                Object.getOwnPropertyNames(result).length > 0
                     yes
                 else
                     @error = errors.BADINFOHASH
@@ -254,8 +259,13 @@ ___
         _validatePasskey: ->
             if @passkey
                 query = criteria: passkey: @passkey
-                {result} = queries.getDocuments query
-                if result? and Object.getOwnPropertyNames(result).length > 0
+                {error, result} = queries.getDocuments query
+                
+                if error?
+                    @error = errors.BADQUERY
+                    no
+                else if result? and
+                Object.getOwnPropertyNames(result).length > 0
                     if not result.active
                         @error = errors.INACTIVEUSER
                         no

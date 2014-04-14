@@ -17,6 +17,7 @@
     },
     "errors": {
         "NOERROR": -1,
+        "BADQUERY": 0,
         "BADPORT": 1,
         "BADIP": 2,
         "BADINFOHASH": 3,
