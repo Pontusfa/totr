@@ -1,6 +1,6 @@
 obj = {}
 obj.queries = require './queriesFixture'
-obj.config = JSON.parse require('fs').readFileSync(process.env.configPath)
+obj.config = JSON.parse require('fs').readFileSync process.env.configPath
 errors = obj.config.errors
 
 obj.peers = [

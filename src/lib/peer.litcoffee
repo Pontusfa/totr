@@ -15,12 +15,20 @@ ___
 This module conforms to the [`strict ecmascript 5.1 specification`]
 (http://www.ecma-international.org/publications/files/ECMA-ST/Ecma-262.pdf).
 
-### Class summary
+## Class summary
 
-#### Construction  
+### Loading
+
+`Peer = require('./peer') {queries, error}`
+
+___
+
+### Construction  
 `new  Peer { peerId, infoHash, ip, port, passkey, compact }`  
 
-#### Variables
+___
+
+### Variables
 
 * `peerId`
 * `infoHash`
@@ -34,9 +42,9 @@ This module conforms to the [`strict ecmascript 5.1 specification`]
 * `completed`
 * `error`
 
+___
 
-
-#### Methods
+### Methods
 
 * `validatePeer `     
 
@@ -129,8 +137,6 @@ ___
             @passkey = @passkey or null
             @compact = @compact or false
 
-___
-
 #### Instance variables
 
             @trackerId = null
@@ -148,8 +154,6 @@ the **peer's identity**.
 At the beginning of a peer's connection, these instance variables are all
  **falsy**. Note that these **may change immediately** after a Peer object
  has been created if the peer already has some or all parts of the torrent.
-
-___
 
 ### Methods
 
@@ -296,9 +300,8 @@ the **error flag** will be set as `BANNEDUSER`.
 
 #### Module creation
  
-    module.exports = (queriesObj, errorsObj) ->
-        queries = queriesObj
-        errors = errorsObj
+    module.exports = (parameters) ->
+        {queries, errors} = parameters
           
 The module takes a **queries** object and **errors** object to be used in the
  Peer class.
