@@ -5,11 +5,9 @@ fixture = require path.join process.env.fixturesPath, 'peerFixture'
 Peer = Peer(fixture.queries, fixture.config.errors)
 peer = null
 
-
 describe 'Peer', ->
   it 'should have all expected methods and no other.', ->
     Peer.prototype.should.have.keys fixture.peerPrototypeFunctions
-  
   
 describe 'Empty instance of Peer', ->
   it 'should be created', ->
