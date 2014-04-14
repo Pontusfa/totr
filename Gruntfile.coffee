@@ -15,6 +15,8 @@ module.exports = (grunt) ->
 
   grunt.initConfig
     clean:
+      logFile: 
+        src: '.logs/'
       dist:
         src: 'dist/js/*'
 
@@ -113,7 +115,8 @@ module.exports = (grunt) ->
                               'env:test',
                               'env:general',
                               'mochaTest',
-                              'clean:test']
+                              'clean:test',
+                              'clean:logFile']
 
   grunt.registerTask 'build', ['coffeelint:src',
                                'clean:dist',
@@ -131,5 +134,5 @@ module.exports = (grunt) ->
                                   'storeCoverage',
                                   'makeReport',
                                   'clean:coverage',
-                                  'clean:test'
-  ]
+                                  'clean:test', 
+                                  'clean:logFile']
