@@ -24,7 +24,7 @@ ___
 
 ### Module usage
 
-`config = { `
+`config = { `  
 `setters: {`  
 `                logFile: '/dev/null'`   
 `                logToConsole: false `  
