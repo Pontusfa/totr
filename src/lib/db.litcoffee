@@ -5,8 +5,6 @@
 This module is loaded with a **config object** and exposes a single 
 **object db**
  
- #TODO: information about the module 
-
 ___
 
     'use strict'
