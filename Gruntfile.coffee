@@ -95,7 +95,7 @@ module.exports = (grunt) ->
           configFile: 'coffeeLint.json'
 
       test:
-        src: 'test/**/*.litcoffee'
+        src: 'test/**/*.coffee'
         options:
           configFile: 'coffeeLint.json'
 

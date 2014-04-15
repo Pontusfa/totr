@@ -25,5 +25,11 @@
         "BANNEDUSER": "Banned user.",
         "BADQUERY": "Error when querying the database."
 
+    },
+    "site": {
+        "ranks": {
+            "MEMBER": 1,
+            "UPLOADER": 2
+        }
     }
 }
