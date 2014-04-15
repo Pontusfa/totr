@@ -2,6 +2,9 @@
   "name": "Totr",
   "description": "Torrent tracker for the modern pirate",
   "version": "0.0.1",
+  "scripts": {
+    "test": "node_modules/.bin/grunt test"
+  },
   "repository": {
     "type": "git",
     "url": "http://github.com/pontusen/totr"
@@ -18,10 +21,9 @@
     "winston": "^0.7.3"
   },
   "devDependencies": {
+    "coffee-script": "^1.7.1",
     "grunt": "^0.4.4",
     "grunt-cli": "^0.1.13",
-    "js-yaml": "~2.0.5",
-    "coffee-script": "^1.7.1",
     "grunt-coffeelint": "0.0.10",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-coffee": "^0.10.1",
@@ -29,6 +31,7 @@
     "grunt-istanbul": "^0.2.5",
     "grunt-mocha-test": "^0.10.2",
     "istanbul": "^0.2.7",
+    "js-yaml": "~2.0.5",
     "mocha": "^1.18.2",
     "nock": "^0.27.3",
     "should": "^3.3.0"
